@@ -120,7 +120,8 @@ class OMXPlayer(object):
                  bus_address_finder=None,
                  Connection=None,
                  dbus_name=None,
-                 pause=False):
+                 pause=False,
+                 preload=True):
         logger.debug('Instantiating OMXPlayer')
 
         if args is None:
@@ -151,7 +152,8 @@ class OMXPlayer(object):
 
         self._process = None
         self._connection = None
-        self.load(source, pause=pause)
+        if (preload):
+          self.load(source, pause=pause)
 
     def _load_source(self, source):
         if self._process:
